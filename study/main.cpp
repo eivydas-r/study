@@ -1,17 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>
 using namespace std;
 
-void writeToFile(){
-    ofstream dataFile("data.txt");
-    dataFile.open("data.txt"); //stops working here
+void writeToFile(string name, string data){
+    ofstream dataFile;
+    dataFile.open(name);
     
     if (dataFile.is_open()){
-        dataFile << "This is a test." << endl;
-        dataFile << "This is also a test." << endl;
+        dataFile << data;
         dataFile.close();
-    } else cout << "Unable to open file";
+    } else cout << "Unable to open file"; exit(1);
 }
 
 void readFile(string name){
@@ -24,12 +24,13 @@ void readFile(string name){
         }
         
         dataFile.close();
-    } else cout << "Unable to open file";
+    } else cout << "Unable to open file"; exit(1);
 }
 
 
 int main(){
-    readFile("data.txt");
+    //readFile("data.txt");
+    writeToFile("data.txt", "Hello world!");
     
     return 0;
 }
