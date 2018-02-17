@@ -1,16 +1,16 @@
-//
-//  main.cpp
-//  study
-//
-//  Created by Eivydas Raulynaitis on 2/17/18.
-//  Copyright © 2018 eivydas-r. All rights reserved.
-//
-
 #include <iostream>
+#include <fstream>
+using namespace std;
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main(){
+    ofstream dataFile("data.txt");
+    dataFile.open("data.txt");
+    
+    if (dataFile.is_open()){
+        dataFile << "This is a test.\n";
+        dataFile << "This is also a test.\n";
+        dataFile.close();
+    } else cout << "Unable to open file";
+    
     return 0;
-    //etc2
 }
