@@ -26,9 +26,13 @@ void readFile(string name){ //reads the text within an inputted file
     } else cout << "Unable to open file";;
 }
 
-
+//
 int main(){
-    writeToFile("data.txt", "Hello world!!!!");
+    cout << "Enter prompt:" << endl;
+    string prompt;
+    getline(cin,prompt);
+    
+    writeToFile("data.txt", prompt);
     readFile("data.txt");
     
     return 0;
