@@ -1,1 +1,18 @@
-[A] x
+[?] This is a question?
+
+[A] Yes
+[B] No
+[C] Ok
+[D] x
+[E] x
+[F] x
+[?] asdasd
+
+[A] sd
+[B] sad
+[C] x
+[?] asd
+
+[A] ok
+[B] x
+[C] x

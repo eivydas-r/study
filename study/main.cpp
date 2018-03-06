@@ -6,10 +6,10 @@ using namespace std;
 
 void writeToFile(string name, string data){ //writes data to an inputted file
     ofstream dataFile;
-    dataFile.open(name);
+    dataFile.open(name,ios::app); //opens and appends to end of file
     
     if (dataFile.is_open()){
-        dataFile << data << "\n"; //doesn't skip line and add to file, resets file
+        dataFile << data << "\n";
         dataFile.close();
     } else cout << "Unable to open file";;
 }
@@ -18,12 +18,27 @@ void readFile(string name){ //reads the text within an inputted file
     string line;
     ifstream dataFile(name);
     
+    cout << endl << "** Reading..." << endl;
+    
     if (dataFile.is_open()){
         while (getline(dataFile, line)){
             cout << line << endl;
         }
         dataFile.close();
     } else cout << "Unable to open file";;
+}
+
+void addAnswer(string answer, char letter){
+    cout << answer << endl; //this prints nothing?
+    if (answer == "x"){
+        return;
+    }
+    string prefix = "["; //use str.insert instead
+    prefix += letter;
+    prefix += "] ";
+    cout << prefix;
+    getline(cin,answer);
+    writeToFile("data.txt", prefix + answer);
 }
 
 void addQuestion(){
@@ -39,40 +54,40 @@ void addQuestion(){
     while (tolower(answer[0]) != 'x'){
         switch (count){
             case 1:
-                cout << "[A] ";
+                addAnswer(answer, 'A');
                 break;
             case 2:
-                cout << "[B] ";
+                addAnswer(answer, 'B');
                 break;
             case 3:
-                cout << "[C] ";
+                addAnswer(answer, 'C');
                 break;
             case 4:
-                cout << "[D] ";
+                addAnswer(answer, 'D');
                 break;
             case 5:
-                cout << "[E] ";
+                addAnswer(answer, 'E');
                 break;
             case 6:
-                cout << "[F] ";
+                addAnswer(answer, 'F');
                 break;
             case 7:
-                cout << "[G] ";
+                addAnswer(answer, 'G');
                 break;
             case 8:
-                cout << "[H] ";
+                addAnswer(answer, 'H');
                 break;
             case 9:
-                cout << "[I] ";
-                break;
-            default:
+                addAnswer(answer, 'I');
                 break;
         }
-        getline(cin,answer);
-        writeToFile("data.txt", "[A] " + answer); //move into switch later
-        count++;
+        if (count > 9){
+            cout << endl << "** Maximum answers reached..." << endl;
+            break;
+        } else{
+            count++;
+        }
     }
-    
     readFile("data.txt");
 }
 
