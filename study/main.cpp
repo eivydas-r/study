@@ -9,7 +9,7 @@ void writeToFile(string name, string data){ //writes data to an inputted file
     dataFile.open(name);
     
     if (dataFile.is_open()){
-        dataFile << data << "\n";
+        dataFile << data << "\n"; //doesn't skip line and add to file, resets file
         dataFile.close();
     } else cout << "Unable to open file";;
 }
@@ -69,7 +69,7 @@ void addQuestion(){
                 break;
         }
         getline(cin,answer);
-        writeToFile("data.txt", "[A] " + answer);
+        writeToFile("data.txt", "[A] " + answer); //move into switch later
         count++;
     }
     
