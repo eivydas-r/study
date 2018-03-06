@@ -9,7 +9,7 @@ void writeToFile(string name, string data){ //writes data to an inputted file
     dataFile.open(name);
     
     if (dataFile.is_open()){
-        dataFile << data;
+        dataFile << data << "\n";
         dataFile.close();
     } else cout << "Unable to open file";;
 }
@@ -26,14 +26,60 @@ void readFile(string name){ //reads the text within an inputted file
     } else cout << "Unable to open file";;
 }
 
-//
-int main(){
-    cout << "Enter prompt:" << endl;
+void addQuestion(){
+    cout << "** Enter prompt:" << endl << "[?] ";
     string prompt;
     getline(cin,prompt);
+    writeToFile("data.txt", "[?] " + prompt + "\n");
     
-    writeToFile("data.txt", prompt);
+    cout << "** Enter possible answers, 'X' to stop:" << endl;
+    string answer;
+    int count = 1;
+
+    while (tolower(answer[0]) != 'x'){
+        switch (count){
+            case 1:
+                cout << "[A] ";
+                break;
+            case 2:
+                cout << "[B] ";
+                break;
+            case 3:
+                cout << "[C] ";
+                break;
+            case 4:
+                cout << "[D] ";
+                break;
+            case 5:
+                cout << "[E] ";
+                break;
+            case 6:
+                cout << "[F] ";
+                break;
+            case 7:
+                cout << "[G] ";
+                break;
+            case 8:
+                cout << "[H] ";
+                break;
+            case 9:
+                cout << "[I] ";
+                break;
+            default:
+                break;
+        }
+        getline(cin,answer);
+        writeToFile("data.txt", "[A] " + answer);
+        count++;
+    }
+    
     readFile("data.txt");
+}
+
+
+int main(){
+    addQuestion();
+    
     
     return 0;
 }
