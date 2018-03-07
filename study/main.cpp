@@ -108,6 +108,8 @@ void mainMenu(){
     
     char choice;
     cin >> choice;
+    cin.clear(); //bypass newline by enter
+    cin.ignore( numeric_limits <streamsize> ::max(), '\n' );
     
     switch (toupper(choice)) {
         case 'A':
@@ -126,7 +128,18 @@ void mainMenu(){
             cout << "** Still in development." << endl;
             break;
         case 'Y':
-            cout << "** Still in development." << endl;
+            cout << "[Y] extra info:" << endl
+            << "\t** Selection info" << endl
+            << "\t[A] add questions mode: allows you to add \n\tquestions with answers to the data file that can \n\tbe later used for other modes" << endl
+            << "\t[B] quiz mode: will quiz you on the questions in \n\tdata, good for studying" << endl
+            << "\t[C] test mode: will test you on questions in data, \n\tanswers and percentage correct given at the end" << endl
+            << "\t[D] read all current data: reads all current \n\tquestions/answers collected in the data file" << endl
+            << "\t[E] clear all data: delete all data stored in data \n\tfile permanently" << endl
+            << "\t[Y] extra info: this" << endl;
+                    
+            cout << "\n\t** Type 'X' to return to main menu: ";
+            char input;
+            cin >> input;
             break;
         case 'X':
             cout << "** Still in development." << endl;
