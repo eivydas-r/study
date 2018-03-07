@@ -28,17 +28,21 @@ void readFile(string name){ //reads the text within an inputted file
     } else cout << "Unable to open file";;
 }
 
-void addAnswer(string answer, char letter){
-    cout << answer << endl; //this prints nothing?
-    if (answer == "x"){
-        return;
-    }
+void addAnswer(bool& terminate, char letter){
     string prefix = "["; //use str.insert instead
     prefix += letter;
     prefix += "] ";
     cout << prefix;
+    
+    string answer;
     getline(cin,answer);
-    writeToFile("data.txt", prefix + answer);
+    
+    if (answer[0] == 'x'){
+        terminate = true;
+    } else {
+        writeToFile("data.txt", prefix + answer);
+        terminate = false;
+    }
 }
 
 void addQuestion(){
@@ -48,37 +52,38 @@ void addQuestion(){
     writeToFile("data.txt", "[?] " + prompt + "\n");
     
     cout << "** Enter possible answers, 'X' to stop:" << endl;
-    string answer;
+    
+    bool terminate = false;
     int count = 1;
 
-    while (tolower(answer[0]) != 'x'){
+    while (!terminate){
         switch (count){
             case 1:
-                addAnswer(answer, 'A');
+                addAnswer(terminate, 'A');
                 break;
             case 2:
-                addAnswer(answer, 'B');
+                addAnswer(terminate, 'B');
                 break;
             case 3:
-                addAnswer(answer, 'C');
+                addAnswer(terminate, 'C');
                 break;
             case 4:
-                addAnswer(answer, 'D');
+                addAnswer(terminate, 'D');
                 break;
             case 5:
-                addAnswer(answer, 'E');
+                addAnswer(terminate, 'E');
                 break;
             case 6:
-                addAnswer(answer, 'F');
+                addAnswer(terminate, 'F');
                 break;
             case 7:
-                addAnswer(answer, 'G');
+                addAnswer(terminate, 'G');
                 break;
             case 8:
-                addAnswer(answer, 'H');
+                addAnswer(terminate, 'H');
                 break;
             case 9:
-                addAnswer(answer, 'I');
+                addAnswer(terminate, 'I');
                 break;
         }
         if (count > 9){
