@@ -141,7 +141,6 @@ void mainMenu(){
 int main(){
     mainMenu(); //inputs into [A] prompt unintentionally also
     
-    
     return 0;
 }
 
