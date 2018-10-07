@@ -1,1 +1,32 @@
-uhhh
+[?] Is this true?
+
+[A] Yes
+[B] No
+Answer: B
+
+
+[?] ok
+
+[A] ye
+[B] na
+[C] ok
+Answer: A
+
+
+
+[?] ok
+
+[A] okokokokokoko
+[B] okokok
+[C] okx
+Answer: X
+
+
+[?] What's a good question?
+
+[A] Yes
+[B] No
+[C] Maybe
+Answer: C
+
+
